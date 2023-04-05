@@ -1,0 +1,15 @@
+@import "bootstrap/scss/bootstrap";
+ul {
+  list-style: none;
+  padding: 0 !important;
+  text-align: start;
+}
+li{
+  cursor: pointer;
+}
+
+.btn-section{
+  display: flex;
+  gap: 20px;
+  justify-content: end;
+}
