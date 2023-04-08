@@ -26,20 +26,24 @@ class Search extends HTMLElement {
     }
 
     //methods
-    search() {
-        this.shadowRoot.querySelector('li').addEventListener('click', function () {
-            this.classList.add('active-item')
-            let main = document.getElementById('main');
-            main.innerHTML = ''
-            main.innerHTML = `<co-search-input placeHolder="Search Music Name..."></co-search-input>`
+     search() {
+        this.shadowRoot.querySelector('li').addEventListener('click',  function () {
+           window.location.href = 'http://127.0.0.1:8080/search'
         })
     }
+
 
     //Lifecycle method
     connectedCallback() {
         //set component value with Attribute
         this.shadowRoot.querySelector('span').innerHTML = this.getAttribute('search-value')
         this.search()
+        let self = this.shadowRoot.querySelector('li')
+        if (window.location.href === 'http://127.0.0.1:8080/search') {
+            self.classList.add('active-link')
+        } else {
+            self.classList.remove('active-link')
+        }
     }
 
     //get Attribute value

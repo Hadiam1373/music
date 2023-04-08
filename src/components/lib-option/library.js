@@ -1,9 +1,10 @@
 const template = document.createElement('template')
 //insert template
 template.innerHTML = `
-    <!--       import component style-->
-   <link rel="stylesheet" href="/components/option/option.css">
-   <div>
+  <!--       import component style-->
+  <link rel="stylesheet" href="/components/lib-option/lib-option.css">
+  
+ <div>
      <li id="list" class="cu-list">
     <!--    use slot to show icon-->
          <slot name="icon"></slot>
@@ -15,7 +16,7 @@ template.innerHTML = `
 `
 
 //create class with component name extends HTMLElement
-class Option extends HTMLElement {
+class Lib extends HTMLElement {
     constructor() {
         //call HTMLElement constructor
         super();
@@ -26,29 +27,19 @@ class Option extends HTMLElement {
     }
 
     //methods
-    call() {
-        this.shadowRoot.querySelector('li').addEventListener('click', function () {
-            window.location.href = 'http://127.0.0.1:8080/'
-        })
+    method() {
+
     }
 
     //Lifecycle method
     connectedCallback() {
-        //set component value with Attribute
-        this.shadowRoot.querySelector('span').innerHTML = this.getAttribute('option-value')
-        this.call()
-        let self = this.shadowRoot.querySelector('li')
-        if (window.location.href === 'http://127.0.0.1:8080/') {
-            self.classList.add('active-link')
-        } else {
-            self.classList.remove('active-link')
-        }
+        this.shadowRoot.querySelector('span').innerHTML = this.getAttribute('value')
     }
 
     //get Attribute value
     static observedAttributes() {
-        return ['option-value']
+        return ['value']
     }
 }
 
-export {Option}
+export {Lib}
