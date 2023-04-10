@@ -1,3 +1,4 @@
+import {getTopAlbum} from "../../api/apis/getTopAlbum";
 const template = document.createElement('template')
 //insert template
 template.innerHTML = `
@@ -22,19 +23,24 @@ class productes extends HTMLElement {
 
     //methods
     createCart() {
-        let app = document.getElementById('app');
-        for (let i = 0; i < 20; i++) {
-            let div = document.createElement('div')
-            div.innerHTML = `<co-card></co-card>`
-            div.style.width = 'min-content'
-            app.appendChild(div)
-        }
+        alert('dddddddd')
+
 
     }
 
     //Lifecycle method
     connectedCallback() {
-        this.createCart()
+        // console.log(r.data.topalbums.album)
+        getTopAlbum().then(r => {
+            let app = document.getElementById('app');
+            console.log(r.data.topalbums.album.length)
+            for (let i = 0; i < r.data.topalbums.album.length; i++) {
+                let div = document.createElement('div')
+                div.style.width = 'min-content'
+                div.innerHTML = `<co-card data="${r.data.topalbums.album}"></co-card>`
+                app.appendChild(div)
+            }
+        })
     }
 
     //get Attribute value

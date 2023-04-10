@@ -19,6 +19,12 @@ class Card extends HTMLElement {
     connectedCallback() {
         this.attachShadow({mode: 'open'})
         this.shadowRoot.appendChild(template.content.cloneNode(true))
+        this.shadowRoot.querySelector('h1').innerHTML = this.getAttribute('data')
+    }
+
+    //get Attribute value
+    static observedAttributes() {
+        return ['data']
     }
 }
 

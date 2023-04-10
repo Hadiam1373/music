@@ -34,6 +34,7 @@ class Option extends HTMLElement {
 
     //Lifecycle method
     connectedCallback() {
+        let albums = []
         //set component value with Attribute
         this.shadowRoot.querySelector('span').innerHTML = this.getAttribute('option-value')
         this.call()
