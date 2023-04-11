@@ -23,8 +23,6 @@ class productes extends HTMLElement {
 
     //methods
     createCart() {
-        alert('dddddddd')
-
 
     }
 
@@ -33,11 +31,15 @@ class productes extends HTMLElement {
         // console.log(r.data.topalbums.album)
         getTopAlbum().then(r => {
             let app = document.getElementById('app');
-            console.log(r.data.topalbums.album.length)
+            console.log(r.data.topalbums.album)
             for (let i = 0; i < r.data.topalbums.album.length; i++) {
                 let div = document.createElement('div')
+                console.log(r.data.topalbums.album[i])
                 div.style.width = 'min-content'
-                div.innerHTML = `<co-card data="${r.data.topalbums.album}"></co-card>`
+                div.innerHTML = `<co-card 
+                                    name="${r.data.topalbums.album[i].artist.name}"
+                                    image = "${r.data.topalbums.album[i].image[2]['#text']}"
+                                  ></co-card>`
                 app.appendChild(div)
             }
         })

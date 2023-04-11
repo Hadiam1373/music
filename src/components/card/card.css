@@ -1,4 +1,25 @@
 .my-card {
-    background-color: aliceblue;
-    color: black;
+    background-color: rgb(89 101 116 / 53%);
+    color: white;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.image-section {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+#name-album{
+    font-weight: bold;
+}
+
+.title-name-album{
+    font-size: 18px;
+    font-weight: bold;
+    color: gray;
 }

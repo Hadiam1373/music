@@ -4,7 +4,10 @@ template.innerHTML = `
    <!--       import component style-->
    <link rel="stylesheet" href="/components/card/card.css">
    <div id="card" class="my-card">
-     <h1>component</h1>
+     <div class="image-section" id="image-album"></div>
+     <span class="title-name-album">Album Name:</span>
+     <br/>
+     <span id="name-album"></span>
    </div>
 `
 
@@ -17,9 +20,13 @@ class Card extends HTMLElement {
 
     //Lifecycle method
     connectedCallback() {
+        let name = this.getAttribute('name')
+        let image = this.getAttribute('image')
+        console.log(image)
         this.attachShadow({mode: 'open'})
         this.shadowRoot.appendChild(template.content.cloneNode(true))
-        this.shadowRoot.querySelector('h1').innerHTML = this.getAttribute('data')
+        this.shadowRoot.getElementById('name-album').innerHTML = name
+        this.shadowRoot.getElementById('image-album').style.backgroundImage = `url(${image})`;
     }
 
     //get Attribute value
